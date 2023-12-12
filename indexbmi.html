@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI TELKOM</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(Desktop\ -\ 6\ \(1\).png); 
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #000; 
+        }
+
+        .container {
+            margin-top: 100px;
+            background-color: #ffffff; 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        hr {
+            margin: 15px 0;
+            border: 1px solid #ddd;
+        }
+
+        form {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: calc(100% - 20px);
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: linear-gradient(#6A4BFF, #9070F7, #9070F7);
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI TELKOM</h1>
+        <hr>
+        <form>
+            <label for="nama">Nama :</label>
+            <input type="text" id="nama">
+        </form>
+        <form>
+            <label for="berat">Berat Badan:</label>
+            <input type="text" id="berat">
+        </form>
+        <form>
+            <label for="tinggi">Tinggi :</label>
+            <input type="text" id="tinggi">
+        </form>
+        <hr>
+        <form>
+            <label for="bmi">BMI:</label>
+            <textarea name="bmi" id="bmi" cols="30" rows="1" readonly></textarea>
+        </form>
+        <button onclick="hasil()">Proses</button>
+    </div>
+
+    <script>
+        function hasil() {
+            var berat = parseFloat(document.getElementById('berat').value);
+            var tinggi = parseFloat(document.getElementById('tinggi').value);
+
+            if (isNaN(berat) || isNaN(tinggi) || berat <= 0 || tinggi <= 0) {
+                alert("Please enter valid values for berat and tinggi.");
+                return;
+            }
+
+            var tinggiMeters = tinggi / 100;
+            var bmi = berat / (tinggiMeters * tinggiMeters);
+
+            document.getElementById("bmi").value = bmi.toFixed(2);
+        }
+    </script>
+</body>
+</html>

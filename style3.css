@@ -1,0 +1,32 @@
+body {
+    background: url(Desktop\ -\ 6\ \(1\).png);
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.card {
+    color: white;
+}
+
+.balok {
+    margin-left: 175px;
+}
+
+th{
+    border: 2px solid black;
+}
+
+tr {
+    border: 2px solid black;
+}
+.button {
+    background: linear-gradient(#6A4BFF, #9070F7, #9070F7);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}

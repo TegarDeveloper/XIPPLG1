@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangun Ruang</title>
+    <style>
+        body {
+            background: url(Desktop\ -\ 6\ \(1\).png);
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+
+        .card {
+            color: black;
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .balok {
+            margin-left: 175px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .button {
+            background: linear-gradient(#6A4BFF, #9070F7, #9070F7);
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Form Balok -->
+    <div class="card">
+        <h4 style="font-size: 2rem;">Menghitung Volume Bangun Ruang (dalam cm)</h4>
+        <form name="formBalok" class="balok">
+            <table>
+                <caption>Balok</caption>
+                <tr>
+                    <td>Panjang</td>
+                    <td><input type="text" name="nilaiPanjang" style="border: none;"/></td>
+                </tr>
+                <tr>
+                    <td>Lebar</td>
+                    <td><input type="text" name="nilaiLebar" style="border: none;"/></td>
+                </tr>
+                <tr>
+                    <td>Tinggi</td>
+                    <td><input type="text" name="nilaiTinggi" style="border: none;"/></td>
+                </tr>
+                <tr>
+                    <td>Volume</td>
+                    <td><span id="hasilBalok"></span></td>
+                </tr>
+                <td>
+                    <input type="button" class="button" value="Hitung" onClick="balok()"/>
+                    <input type="reset" class="button" /><br/>
+                </td>
+            </table>
+        </form>
+
+        <!-- Form Kubus -->
+        <form name="formKubus" style="margin-top: 50px;" class="balok">
+            <table>
+                <caption>Kubus</caption>
+                <tr>
+                    <td>Sisi</td>
+                    <td><input type="text" name="sisi" style="border: none;"/></td>
+                </tr>
+                <tr>
+                    <td>Volume</td>
+                    <td><span id="hasilKubus"></span></td>
+                </tr>
+                <td>
+                    <input type="button" class="button" value="Hitung" onClick="kubus()" />
+                    <input type="reset" class="button" /><br/>
+                </td>
+            </table>
+        </form>
+
+        <!-- Form Kerucut -->
+        <form name="formKerucut" style="margin-top: 50px;" class="balok">
+            <table>
+                <caption>Kerucut</caption>
+                <tr>
+                    <td>Jari-Jari</td>
+                    <td><input type="text" name="jarijari" style="border: none;"/></td>
+                </tr>
+                <tr>
+                    <td>Volume</td>
+                    <td><span id="hasilKerucut"></span></td>
+                </tr>
+                <td>
+                    <input type="button" class="button" value="Hitung" onClick="kerucut()" />
+                    <input type="reset" class="button" /><br/>
+                </td>
+            </table>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        function balok() {
+            var panjang = parseFloat(document.formBalok.nilaiPanjang.value);
+            var tinggi = parseFloat(document.formBalok.nilaiTinggi.value);
+            var lebar = parseFloat(document.formBalok.nilaiLebar.value);
+            var hasil = panjang * tinggi * lebar + " cm<sup>3</sup>";
+            document.getElementById("hasilBalok").innerHTML = hasil;
+        }
+
+        function kubus() {
+            var sisi = parseFloat(document.formKubus.sisi.value);
+            var hasil = sisi * sisi * sisi + " cm<sup>3</sup>";
+            document.getElementById("hasilKubus").innerHTML = hasil;
+        }
+
+        function kerucut() {
+            var jarijari = parseFloat(document.formKerucut.jarijari.value);
+            var hasil = (1/3) * Math.PI * jarijari * jarijari + " cm<sup>3</sup>";
+            document.getElementById("hasilKerucut").innerHTML = hasil;
+        }
+    </script>
+</body>
+</html>

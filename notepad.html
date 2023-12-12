@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KASIR TELKOM</title>
+    <style>
+        body {
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>KASIR TELKOM</h1>
+    </div>
+    <hr>
+    <div class="input">
+        <form>
+            Nama Barang: <input type="text" id="barang">
+        </form>
+        <form>
+            Jumlah: <input type="text"  id="jumlah">
+        </form>
+        <form>
+            Harga: <input type="text" id="harga">
+        </form>
+        <form>
+            Uang Pembayaran: <input type="text" id="uangPembayaran">
+        </form>
+        <hr>
+        <form>
+            Total: <textarea name="total" id="total" cols="30" rows="1" readonly></textarea>
+        </form>
+        <form>
+            Diskon: <textarea name="diskon" id="diskon" cols="30" rows="1" readonly></textarea>
+        </form>
+        <form>
+            Total Akhir: <textarea name="bayar" id="bayar" cols="30" rows="1" readonly></textarea>
+        </form>
+        <form>
+            Kembalian: <textarea name="kembalian" id="kembalian" cols="30" rows="1" readonly></textarea>
+        </form>
+        <button onclick="hasil()">Proses</button>
+    </div>
+
+    <script>
+        function hasil() {
+            var harga = parseFloat(document.getElementById('harga').value);
+            var jumlah = parseFloat(document.getElementById('jumlah').value);
+            var total = harga * jumlah;
+
+            document.getElementById("total").value = total.toFixed(2);
+            
+            var diskon = 0.10;
+            var bayar;
+            
+            var uangPembayaran = parseFloat(document.getElementById('uangPembayaran').value);
+            var kembalian;
+
+            if (total > 100000) {
+                bayar = total - (total * diskon);
+                document.getElementById("bayar").value = bayar.toFixed(2);
+                document.getElementById("diskon").value = "10%";
+            } else {
+                document.getElementById("bayar").value = total.toFixed(2);
+                document.getElementById("diskon").value = "0%";
+            }
+
+            kembalian = uangPembayaran - bayar;
+
+            if (kembalian >= 0) {
+                document.getElementById("kembalian").value = kembalian.toFixed(2);
+            } else {
+                alert("Uang Pembayaran Kurang!");
+            }
+        }
+    </script>
+</body>
+</html>
